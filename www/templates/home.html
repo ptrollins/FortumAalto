@@ -1,0 +1,55 @@
+<ion-view view-title="Fortum">
+    <ion-content scroll="false">
+
+        <div style="background-color: lightskyblue">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a8/Fortum.svg/1024px-Fortum.svg.png" height="100px">
+        </div>
+
+        <div>
+
+            <div style="height: 83vh; background-color:lightblue; float: left;">
+                <button style="height: 235px; width: 245px; float: left; margin: 9px 0px 0px 9px; background-color:white;">
+
+                </button>
+                <button ng-click="lightOn()" icon-on="lightbulb"
+                        style="height: 235px; width: 245px; float: left; margin: 9px 0px 0px 9px; font-size: 20vh"
+                        ng-style="{'background-color':lightbutton}">
+                    <i class="icon {{lightIcon}}"></i>
+                </button>
+                <div style="height: 235px; width: 245px; float: left; margin: 9px 0px 0px 9px; background-color: red;z-index: 1; position: relative">
+                    <img src="http://orig11.deviantart.net/3704/f/2010/126/f/b/window_transparent_png_by_absurdwordpreferred.png" width="245px" height="215px">
+                </div>
+                <button style="height: 235px; width: 245px; float: left; margin: 9px 0px 0px 9px; background-color:white;">
+                    <svg id="svg1" xmlns="http://www.w3.org/2000/svg" style="width: 200px; height: 200px">
+                        <circle id="circle1" r="90" cx="100" cy="100" style="fill: blue; stroke: grey; stroke-width: 15"/>
+                        <text x="30" y="135" fill="white" font-size="100">{{temp | number : 0}}&deg</text>
+                    </svg>
+                </button>
+                <button style="height: 235px; width: 245px; float: left; margin: 9px 0px 0px 9px; background-color:white; font-size: 10vh">
+                    <i class="icon ion-outlet" style="height: 100px"></i><br>x5
+                </button>
+                <ion-scroll style="height: 235px; width: 245px; float: left; margin: 9px 0px 0px 9px; z-index: 1; position: relative">
+                    <ion-list>
+                        <ion-item ng-repeat="times in calendar">
+                            {{times.time}}:{{times.description}}
+                        </ion-item>
+                    </ion-list>
+                </ion-scroll>
+            </div>
+
+        </div>
+        <div id="windmill" style="width: 50vw; position:absolute;top:-4vh;left:65vw;">
+            <!--img style="height: 100vh; width: 100%" src="../img/Leaf.png"/>
+            <p>
+                <button onClick="windmill.start()">Start</button>
+                <button onClick="windmill.stop()">Stop</button>
+            </p-->
+        </div>
+
+        <!--ion-list>
+          <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+            {{playlist.title}}
+          </ion-item>
+        </ion-list-->
+    </ion-content>
+</ion-view>
