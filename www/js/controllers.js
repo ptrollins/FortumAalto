@@ -3,21 +3,38 @@ angular.module('fortum')
 
     .controller('HomeCtrl', function ($scope, Apps, $stateParams, $cordovaGeolocation, $http) {
         var isOn = false;
-        $scope.lightIcon = 'ion-ios-lightbulb';
+        $scope.lightIcon = 'off';
         $scope.lightbutton = 'darkgray';
         $scope.lightOn = function (){
                 if (isOn) {
                     isOn = false;
                     $scope.lightbutton = 'darkgray';
-                    $scope.lightIcon = 'ion-ios-lightbulb';
+                    $scope.lightIcon = 'off';
                 }
                 else {
                     isOn = true;
                     $scope.lightbutton = 'yellow';
-                    $scope.lightIcon = 'ion-ios-lightbulb-outline';
+                    $scope.lightIcon = 'on';
                 }
         };
-            windmill.init();
+
+        var isOpen = false;
+        $scope.windowIcon = 'close';
+        $scope.windowbutton = 'darkgray';
+        $scope.windowOpen = function (){
+            if (isOpen) {
+                isOpen = false;
+                $scope.windowbutton = 'green';
+                $scope.windowIcon = 'close';
+            }
+            else {
+                isOpen = true;
+                $scope.windowbutton = 'red';
+                $scope.windowIcon = 'open';
+            }
+        };
+
+        windmill.init();
 
         $scope.calendar = Apps.getCalendar();
 
