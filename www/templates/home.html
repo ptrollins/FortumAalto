@@ -13,16 +13,16 @@
             </div>
             <div class="col-25" style="height: 235px; width: 245px; margin: 9px 9px 0px 9px;">
                 <button ng-click="lightOn()"
-                        style="height: 235px; width: 245px; float: left;  font-size: 20vh"
-                        ng-style="{'background-color':lightbutton}">
-                    <img src="img/{{lightIcon}}.png" style="height: 235px; width: 245px;">
+                        style="height: 235px; width: 245px; float: left;  font-size: 20vh; background-size: 100%;"
+                        ng-style="{'background-image': 'url('+lightIcon+')'}">
+                    <!--img src="img/{{lightIcon}}.png" style="height: 235px; width: 245px;"-->
                 </button>
             </div>
             <div class="col-25" style="margin: 9px 9px 0px 9px;">
                 <button ng-click="windowOpen()"
-                        style="height: 235px; width: 245px; float: left;  font-size: 20vh; z-index: 1; position: relative"
-                        ng-style="{'background-color':windowbutton}">
-                    <img src="img/{{windowIcon}}.png" style="height: 235px; width: 245px;">
+                        style="height: 235px; width: 245px; float: left;  font-size: 20vh; z-index: 1; position: relative; background-size: 100%;"
+                        ng-style="{'background-image': 'url('+windowIcon+')'}">
+                    <!--img src="img/{{windowIcon}}.png" style="height: 235px; width: 245px;"-->
                 </button>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-25" style="margin: 9px 9px 0px 9px;">
                 <button style="height: 235px; width: 245px; float: left;  background-color:#ffffff;">
                     <svg id="svg1" xmlns="http://www.w3.org/2000/svg" style="width: 200px; height: 200px">
-                        <circle id="circle1" r="90" cx="100" cy="100" style="fill: blue; stroke: grey; stroke-width: 15"/>
+                        <circle id="circle1" r="90" cx="100" cy="100" style="fill: blue; stroke: grey; stroke-width: 15;"/>
                         <text x="30" y="135" fill="white" font-size="100">{{temp | number : 0}}&deg</text>
                     </svg>
                 </button>

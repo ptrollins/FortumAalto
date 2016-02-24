@@ -3,34 +3,34 @@ angular.module('fortum')
 
     .controller('HomeCtrl', function ($scope, Apps, $stateParams, $cordovaGeolocation, $http) {
         var isOn = false;
-        $scope.lightIcon = 'off';
-        $scope.lightbutton = 'darkgray';
+        $scope.lightIcon = 'img/off.png';
+        //$scope.lightbutton = 'darkgray';
         $scope.lightOn = function (){
                 if (isOn) {
                     isOn = false;
-                    $scope.lightbutton = 'darkgray';
-                    $scope.lightIcon = 'off';
+                    //$scope.lightbutton = 'darkgray';
+                    $scope.lightIcon = 'img/off.png';
                 }
                 else {
                     isOn = true;
-                    $scope.lightbutton = 'yellow';
-                    $scope.lightIcon = 'on';
+                    //$scope.lightbutton = 'yellow';
+                    $scope.lightIcon = 'img/on.png';
                 }
         };
 
         var isOpen = false;
-        $scope.windowIcon = 'close';
-        $scope.windowbutton = 'darkgray';
+        $scope.windowIcon = 'img/close.png';
+        //$scope.windowbutton = 'darkgray';
         $scope.windowOpen = function (){
             if (isOpen) {
                 isOpen = false;
-                $scope.windowbutton = 'green';
-                $scope.windowIcon = 'close';
+                //$scope.windowbutton = 'green';
+                $scope.windowIcon = 'img/close.png';
             }
             else {
                 isOpen = true;
-                $scope.windowbutton = 'red';
-                $scope.windowIcon = 'open';
+                //$scope.windowbutton = 'red';
+                $scope.windowIcon = 'img/open.png';
             }
         };
 
