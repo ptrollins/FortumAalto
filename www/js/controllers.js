@@ -8,7 +8,6 @@ angular.module('fortum')
         $scope.lightOn = function (){
                 if (isOn) {
                     isOn = false;
-<<<<<<< Updated upstream
                     //$scope.lightbutton = 'darkgray';
                     $scope.lightIcon = 'img/off.png';
                 }
@@ -16,15 +15,6 @@ angular.module('fortum')
                     isOn = true;
                     //$scope.lightbutton = 'yellow';
                     $scope.lightIcon = 'img/on.png';
-=======
-                    $scope.lightbutton = 'white';
-                    $scope.lightIcon = 'off';
-                }
-                else {
-                    isOn = true;
-                    $scope.lightbutton = 'white';
-                    $scope.lightIcon = 'on';
->>>>>>> Stashed changes
                 }
         };
 
