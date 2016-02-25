@@ -124,19 +124,19 @@ angular.module('fortum')
         var calendar = [{
             id: 0,
             time: '09:00',
-            description: 'Team 5'
+            description: 'Empty'
         }, {
             id: 0,
             time: '10:00',
-            description: 'Team 6'
+            description: 'Empty'
         }, {
             id: 0,
             time: '11:00',
-            description: 'Team 1'
+            description: 'Empty'
         }, {
             id: 0,
             time: '12:00',
-            description: 'Team 1'
+            description: 'NRGIA'
         }, {
             id: 1,
             time: '13:00',
@@ -153,7 +153,41 @@ angular.module('fortum')
             id: 4,
             time: '16:00',
             description: 'Team 5'
+        }, {
+            id: 5,
+            time: '17:00',
+            description: 'Team 5'
+        }, {
+            id: 6,
+            time: '18:00',
+            description: 'Team 5'
+        }, {
+            id: 7,
+            time: '19:00',
+            description: 'Team 5'
+        }
+        , {
+            id: 8,
+            time: '20:00',
+            description: 'Team 5'
+        }, {
+            id: 9,
+            time: '21:00',
+            description: 'Team 5'
+        }, {
+            id: 10,
+            time: '22:00',
+            description: 'Team 5'
+        }, {
+            id: 11,
+            time: '23:00',
+            description: 'Team 5'
+        }, {
+            id: 12,
+            time: '24:00',
+            description: 'Team 5'
         }];
+
 
         var questions = [{
             id: 0,

@@ -34,6 +34,11 @@ angular.module('fortum')
             }
         };
 
+                $scope.thermo = 'img/thermo.png';
+                $scope.dial = 'img/dial.png';
+                $scope.outlet = 'img/outlet.png';
+
+
         windmill.init();
 
         $scope.calendar = Apps.getCalendar();
@@ -45,9 +50,10 @@ angular.module('fortum')
             .getCurrentPosition(posOptions)
             .then(function (position) {
                 var lat  = position.coords.latitude;
-                var long = position.coords.longitude;
-                var weatherURL = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+long+"&units=metric&appid=db13533861b4257bfc4d101bb252547e";
-                console.log(weatherURL);
+                var long = position.coords.longitude;                                                       
+                //change between metric and imperial for C or F
+                var weatherURL = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+long+"&units=imperial&appid=db13533861b4257bfc4d101bb252547e"; 
+                console.log(weatherURL); 
                 $http.get(weatherURL)
                     .then(function(result){
                         //weather = result;

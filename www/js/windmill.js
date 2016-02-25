@@ -3,8 +3,8 @@
 var windmill=(function(){
 		var scale_factor; var sails; var spinning=false; var original_height; var original_width;
 		var options={};
-		options.sail_color='#003a69';
-		options.base_color='#006A48';
+		options.sail_color='#97A2A2';
+		options.base_color='#2EAF53';
 		options.time=1000;
 	var center_x;
 	var center_y;
