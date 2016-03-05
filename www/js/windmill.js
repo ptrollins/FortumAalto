@@ -44,8 +44,6 @@ var windmill=(function(){
 			options.time -= 100;
 			anim=Raphael.animation({transform: position}, options.time, 'linear').repeat(Infinity);
 			sails.animate(anim);
-
-			console.log(options.time);
 		};
 		
 		var stop=function(){

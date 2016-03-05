@@ -1,42 +1,80 @@
 angular.module('fortum')
 
 
-    .controller('HomeCtrl', function ($scope, Apps, $stateParams, $cordovaGeolocation, $http) {
+    .controller('HomeCtrl', function ($scope, Apps, $stateParams, $cordovaGeolocation, $http, $cordovaFlashlight) {
+        $scope.powerUsed = 10;
+        var pieData = [
+            {
+                value: $scope.powerUsed,
+                color:"#2EAF53"
+            },
+            {
+                value : 100-$scope.powerUsed,
+                color : "#97A2A2"
+            }
+        ];
+        var myDoughnutChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(pieData,{percentageInnerCutout : 80});
+
         var isOn = false;
         $scope.lightIcon = 'img/off.png';
-        //$scope.lightbutton = 'darkgray';
         $scope.lightOn = function (){
-                if (isOn) {
-                    isOn = false;
-                    //$scope.lightbutton = 'darkgray';
-                    $scope.lightIcon = 'img/off.png';
-                }
-                else {
-                    isOn = true;
-                    //$scope.lightbutton = 'yellow';
-                    $scope.lightIcon = 'img/on.png';
-                }
+            window.plugins.flashlight.toggle();
+            if (isOn) {
+                isOn = false;
+                $scope.lightIcon = 'img/off.png';
+                $scope.powerUsed -= 10;
+            }
+            else {
+                isOn = true;
+                $scope.lightIcon = 'img/on.png';
+                $scope.powerUsed += 10;
+            }
+            if ($scope.powerUsed <21){
+                $scope.powerColor  = 'green';
+            }else if ($scope.powerUsed >31){
+                $scope.powerColor  = 'red';
+            }
+            else{
+                $scope.powerColor  = 'yellow';
+            }
+            myDoughnutChart.segments[0].value = $scope.powerUsed;
+            myDoughnutChart.update();
+        };
+
+        $scope.outletsUsed = 1;
+        $scope.powerColor  = 'green';
+        $scope.powerUp = function(){
+            $scope.outletsUsed ++;
+            $scope.powerUsed += 5;
+            if ($scope.powerUsed <21){
+                $scope.powerColor  = 'green';
+            }else if ($scope.powerUsed >31){
+                $scope.powerColor  = 'red';
+            }
+            else{
+                $scope.powerColor  = 'yellow';
+            }
+            console.log($scope.powerUsed);
+            myDoughnutChart.segments[0].value = $scope.powerUsed;
+            myDoughnutChart.update();
         };
 
         var isOpen = false;
         $scope.windowIcon = 'img/close.png';
-        //$scope.windowbutton = 'darkgray';
         $scope.windowOpen = function (){
             if (isOpen) {
                 isOpen = false;
-                //$scope.windowbutton = 'green';
                 $scope.windowIcon = 'img/close.png';
             }
             else {
                 isOpen = true;
-                //$scope.windowbutton = 'red';
                 $scope.windowIcon = 'img/open.png';
             }
         };
 
                 $scope.thermo = 'img/thermo.png';
                 $scope.dial = 'img/dial.png';
-                $scope.outlet = 'img/outlet.png';
+                $scope.outlet = 'img/green.png';
 
 
         windmill.init();
@@ -45,6 +83,7 @@ angular.module('fortum')
 
         //clientID: dj0yJmk9MDlOMEhEb0ZuVnRqJmQ9WVdrOWVYSkZUbTV6TjJVbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1hNg--
         //client secret: 4f1ac092b9dd0d330dd607dbd3f658a1d16f8f08
+        var temp = 0;
         var posOptions = {timeout: 10000, enableHighAccuracy: false};
         $cordovaGeolocation
             .getCurrentPosition(posOptions)
@@ -52,13 +91,13 @@ angular.module('fortum')
                 var lat  = position.coords.latitude;
                 var long = position.coords.longitude;                                                       
                 //change between metric and imperial for C or F
-                var weatherURL = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+long+"&units=imperial&appid=db13533861b4257bfc4d101bb252547e"; 
+                var weatherURL = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+long+"&appid=db13533861b4257bfc4d101bb252547e";
                 console.log(weatherURL); 
                 $http.get(weatherURL)
                     .then(function(result){
                         //weather = result;
-                        $scope.temp = result.data.main.temp;
-                        console.log($scope.temp);
+                        temp = result.data.main.temp;
+                        $scope.temp = temp - 273.15;
                     }, function(err) {
                         console.log(err);
                     });
@@ -66,14 +105,17 @@ angular.module('fortum')
                 console.log(err);
             });
 
-        //var data = [
-        //    {
-        //        value: 300,
-        //        color:"#F7464A",
-        //        highlight: "#FF5A5E",
-        //        label: "Red"
-        //    }];
-        //var myDoughnutChart = new Chart(ctx[1]).Doughnut(data,options);
+        $scope.unittype = 'C';
+        $scope.setTempUnit = function(){
+            if ($scope.unittype == 'F'){
+                $scope.unittype = 'C';
+                $scope.temp = temp - 273.15;
+            }else{
+                $scope.unittype = 'F';
+                $scope.temp = temp * 9/5 - 459.67;
+            }
+        };
+
     })
 
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {

@@ -1,24 +1,35 @@
 <ion-view view-title="Fortum">
+<<<<<<< Updated upstream
     <ion-content scroll="false">
 
         <div class="row" style="height: 15vh; background-color: #dfdfdf"> 
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/ConEd_logo.svg" height="70vh">
+=======
+    <ion-content scroll="false" >
+        <div class="row text-center" style="height:20vh;background-color: #EBEBEB">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/ConEd_logo.svg" height="100vh">
+>>>>>>> Stashed changes
         </div>
 
-        <div class="row" style="background-color:#EBEBEB;">
+        <div class="row" style="height:40vh; background-color:#EBEBEB;">
             <div class="col-25" style="margin: 9px 9px 0px 9px;">
-                
 
-
-                <button style="height: 235px; width: 245px; float: left;  color: white; font-size: 13vh; z-index: 1; position: relative; background-size: 100%;     
-                        background-color: white;"
-                        ng-style="{'background-image': 'url('+dial+')'}"> 
+                <button
+                        style="height: 205px; width: 205px; float: left; z-index: 1; position: relative;
+                        background-color: white;">
+                    <canvas id="canvas" height="180" width="180"></canvas>
                 </button>
+                <!--button
+                        style="height: 205px; width: 205px; float: left;   font-size: 10vh; z-index: 1; position: relative; background-size: 100%;
+                        background-color: white; font-weight: bold;"
+                        ng-style="{color: powerColor}"
+                        ng-style="{'background-image': 'url('+dial+')'}">{{powerUsed}}<br>kWh
+                </button-->
             </div>
            
             <div class="col-25" style="height: 235px; width: 245px; margin: 9px 9px 0px 9px;">
                 <button ng-click="lightOn()"
-                        style="height: 235px; width: 245px; float: left;  font-size: 20vh; background-size: 100%;"
+                        style="height: 205px; width: 205px; float: left;  font-size: 20vh; background-size: 100%;"
                         ng-style="{'background-image': 'url('+lightIcon+')'}">
                     <!--img src="img/{{lightIcon}}.png" style="height: 235px; width: 245px;"-->
                 </button>
@@ -26,31 +37,38 @@
            
             <div class="col-25" style="margin: 9px 9px 0px 9px;">
                 <button ng-click="windowOpen()"
-                        style="height: 235px; width: 245px; float: left;  font-size: 20vh; z-index: 1; position: relative; background-size: 100%;"
+                        style="height: 205px; width: 205px; float: left;  font-size: 20vh; z-index: 1; position: relative; background-size: 100%;"
                         ng-style="{'background-image': 'url('+windowIcon+')'}">
                     <!--img src="img/{{windowIcon}}.png" style="height: 235px; width: 245px;"-->
                 </button>
             </div>
         </div>
        
-        <div class="row" style="background-color:#EBEBEB;">
+        <div class="row" style="height:40vh; background-color:#EBEBEB;">
             <div class="col-25" style="margin: 9px 9px 0px 9px;">
-                <button 
-                        style="height: 235px; width: 245px; float: center; color: white; font-size: 14vh; font-weight: bold; z-index: 1; position: relative; background-size: 100%; background-color: white;"
+                <button ng-click="setTempUnit()"
+                        style="height: 205px; width: 205px; float: left; color: white; font-size: 14vh; font-weight: bold; z-index: 1; position: relative; background-size: 100%; background-color: white;"
                         ng-style="{'background-image': 'url('+thermo+')'}"> 
                         {{temp | number : 0}}&deg
                 </button>
             </div>
             
             <div class="col-25 text-center" style="height: 235px; width: 245px;margin: 9px 9px 0px 9px; ">
-                <button 
-                        style="height: 235px; width: 245px; float: left;  color: white; font-size: 13vh; z-index: 1; position: relative; background-size: 100%; background-color: white;"
-                        ng-style="{'background-image': 'url('+outlet+')'}"> </i><br>
+                <button ng-click="powerUp()"
+                        style="height: 205px; width: 205px; float: left; color: black; background-color: white; font-size: 5vh; font-weight: bold; z-index: 1; position: relative;">
+                    <img height="80%" src="{{outlet}}">x{{outletsUsed}} Devices
                 </button>
+                <!--button ng-click="powerUp()"
+                        style="height: 205px; width: 205px; float: left;  color: black; font-size: 13vh; font-weight: bold; z-index: 1; position: relative; background-size: 100%; background-color: white;"
+                        ng-style="{'background-image': 'url('+outlet+')'}">x{{outletsUsed}} Devices
+                </button-->
             </div>
             
-            <ion-scroll class="col-25" style="height: 235px; width: 245px; float: left; margin: 9px 9px 0px 9px; z-index: 1; position: relative">
-                <ion-list>
+            <ion-scroll class="col-25" style="float: left; margin: 9px 9px 0px 9px; z-index: 1; position: relative">
+                <ion-list style="height: 205px; width: 205px;">
+                    <ion-item class="item item-divider">
+                        Room Schedule
+                    </ion-item>
                     <ion-item ng-repeat="times in calendar">
                         {{times.time}}:{{times.description}}
                     </ion-item>
