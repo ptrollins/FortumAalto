@@ -8,8 +8,8 @@
 //3041
 angular.module('fortum', [
         'ionic',
-        'ngCordova'
-        //'Chart.js'
+        'ngCordova',
+        'chart.js'
     ])
 
     .run(function ($ionicPlatform) {

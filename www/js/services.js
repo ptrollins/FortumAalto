@@ -122,69 +122,76 @@ angular.module('fortum')
         }];
 
         var calendar = [{
-            id: 0,
+            id: 6,
+            time: '6:00',
+            description: 'Empty'
+        },{
+            id: 7,
+            time: '7:00',
+            description: 'Empty'
+        },{
+            id: 8,
+            time: '8:00',
+            description: 'Empty'
+        },{
+            id: 9,
             time: '09:00',
             description: 'Empty'
         }, {
-            id: 0,
+            id: 10,
             time: '10:00',
             description: 'Empty'
         }, {
-            id: 0,
+            id: 11,
             time: '11:00',
             description: 'Empty'
         }, {
-            id: 0,
+            id: 12,
             time: '12:00',
             description: 'NRGIA'
         }, {
-            id: 1,
+            id: 13,
             time: '13:00',
             description: 'Team 2'
         }, {
-            id: 2,
+            id: 14,
             time: '14:00',
             description: 'Team 3'
         }, {
-            id: 3,
+            id: 15,
             time: '15:00',
             description: 'Team 4'
         }, {
-            id: 4,
+            id: 16,
             time: '16:00',
             description: 'Team 5'
         }, {
-            id: 5,
+            id: 17,
             time: '17:00',
             description: 'Team 5'
         }, {
-            id: 6,
+            id: 18,
             time: '18:00',
             description: 'Team 5'
         }, {
-            id: 7,
+            id: 19,
             time: '19:00',
             description: 'Team 5'
-        }
-        , {
-            id: 8,
+        }, {
+            id: 20,
             time: '20:00',
             description: 'Team 5'
         }, {
-            id: 9,
+            id: 21,
             time: '21:00',
             description: 'Team 5'
         }, {
-            id: 10,
+            id: 22,
             time: '22:00',
             description: 'Team 5'
         }, {
-            id: 11,
+            id: 23,
             time: '23:00',
-            description: 'Team 5'
-        }, {
-            id: 12,
-            time: '24:00',
             description: 'Team 5'
         }];
 
@@ -250,31 +257,14 @@ angular.module('fortum')
                 }
                 return null;
             },
-            getByDeveloper: function (devName) {
-                var appsByDev = [];
-                for (var i = 0; i < apps.length; i++) {
-                    if (apps[i].developer === devName) {
-                        appsByDev.push(apps[i]);
-                    }
-                }
-                return appsByDev;
-            },
-            getVideos: function () {
-                return howtovideos;
-            },
             getCalendar: function () {
                 return calendar;
             },
-            getDeveloper: function (devId) {
-                for (var i = 0; i < developers.length; i++) {
-                    if (developers[i].id === parseInt(devId)) {
-                        return developers[i];
-                    }
-                }
+            editCalendar: function(index, description){
+
+                calendar[index].description = description;
+
                 return null;
-            },
-            allQuestions: function () {
-                return questions;
             }
         };
     }])

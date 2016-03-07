@@ -1,19 +1,24 @@
 angular.module('fortum')
 
 
-    .controller('HomeCtrl', function ($scope, Apps, $stateParams, $cordovaGeolocation, $http, $cordovaFlashlight) {
-        $scope.powerUsed = 10;
-        var pieData = [
-            {
-                value: $scope.powerUsed,
-                color:"#2EAF53"
-            },
-            {
-                value : 100-$scope.powerUsed,
-                color : "#97A2A2"
-            }
+    .controller('HomeCtrl', function ($scope, Apps, $stateParams, $cordovaGeolocation, $http) {
+        var powerUsed = .10;
+        $scope.labels = ["kWh", ""];
+        $scope.data = [
+            powerUsed, 1.0-powerUsed
         ];
-        var myDoughnutChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(pieData,{percentageInnerCutout : 80});
+        // $scope.powerUsed = 10;
+        // var pieData = [
+        //    {
+        //        value: $scope.powerUsed,
+        //        color:"#2EAF53"
+        //    },
+        //    {
+        //        value : 100-$scope.powerUsed,
+        //        color : "#97A2A2"
+        //    }
+        //];
+        //var myDoughnutChart = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(pieData,{percentageInnerCutout : 80, maintainAspectRatio: true});
 
         var isOn = false;
         $scope.lightIcon = 'img/off.png';
@@ -37,7 +42,7 @@ angular.module('fortum')
             else{
                 $scope.powerColor  = 'yellow';
             }
-            myDoughnutChart.segments[0].value = $scope.powerUsed;
+            myDoughnutChart.segments[0].value = powerUsed;
             myDoughnutChart.update();
         };
 
@@ -55,7 +60,7 @@ angular.module('fortum')
                 $scope.powerColor  = 'yellow';
             }
             console.log($scope.powerUsed);
-            myDoughnutChart.segments[0].value = $scope.powerUsed;
+            myDoughnutChart.segments[0].value = powerUsed;
             myDoughnutChart.update();
         };
 
@@ -80,6 +85,11 @@ angular.module('fortum')
         windmill.init();
 
         $scope.calendar = Apps.getCalendar();
+        console.log($scope.calendar);
+        $scope.editCalendar = function(times){
+
+            return $scope.calendar;
+        };
 
         //clientID: dj0yJmk9MDlOMEhEb0ZuVnRqJmQ9WVdrOWVYSkZUbTV6TjJVbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1hNg--
         //client secret: 4f1ac092b9dd0d330dd607dbd3f658a1d16f8f08
